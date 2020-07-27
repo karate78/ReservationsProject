@@ -103,3 +103,6 @@ C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationPro
 C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationProject\src\ReservationProject.UI.MVC\obj\Debug\ReservationProject.UI.MVC.csproj.CopyComplete
 C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationProject\src\ReservationProject.UI.MVC\obj\Debug\ReservationProject.UI.MVC.dll
 C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationProject\src\ReservationProject.UI.MVC\obj\Debug\ReservationProject.UI.MVC.pdb
+C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationProject\src\ReservationProject.UI.MVC\bin\ReservationProject.DATA.EF.dll
+C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationProject\src\ReservationProject.UI.MVC\bin\ReservationProject.DATA.EF.pdb
+C:\Users\student\Documents\Visual Studio 2017\Projects\12_PROJECT\ReservationProject\src\ReservationProject.UI.MVC\bin\ReservationProject.DATA.EF.dll.config

@@ -183,16 +183,54 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\font-awesome.min.css" />
+    <Content Include="Content\assets\css\main.css" />
+    <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assets\js\jquery.min.js" />
+    <Content Include="Content\assets\js\jquery.scrollex.min.js" />
+    <Content Include="Content\assets\js\jquery.scrolly.min.js" />
+    <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\assets\js\skel.min.js" />
+    <Content Include="Content\assets\js\util.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\pic01.jpg" />
+    <Content Include="Content\images\pic02.jpg" />
+    <Content Include="Content\images\pic03.jpg" />
+    <Content Include="Content\images\pic04.jpg" />
+    <Content Include="Content\images\pic05.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="_Archive\assets\css\font-awesome.min.css" />
+    <Content Include="_Archive\assets\css\main.css" />
+    <Content Include="_Archive\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="_Archive\assets\js\jquery.min.js" />
+    <Content Include="_Archive\assets\js\jquery.scrollex.min.js" />
+    <Content Include="_Archive\assets\js\jquery.scrolly.min.js" />
+    <Content Include="_Archive\assets\js\main.js" />
+    <Content Include="_Archive\assets\js\skel.min.js" />
+    <Content Include="_Archive\assets\js\util.js" />
+    <Content Include="_Archive\elements.html" />
+    <Content Include="_Archive\generic.html" />
+    <Content Include="_Archive\images\banner.jpg" />
+    <Content Include="_Archive\images\pic01.jpg" />
+    <Content Include="_Archive\images\pic02.jpg" />
+    <Content Include="_Archive\images\pic03.jpg" />
+    <Content Include="_Archive\images\pic04.jpg" />
+    <Content Include="_Archive\images\pic05.jpg" />
+    <Content Include="_Archive\index.html" />
+    <Content Include="Content\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\assets\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -251,6 +289,12 @@
     <Content Include="Views\RolesAdmin\Delete.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="_Archive\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="_Archive\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="_Archive\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="_Archive\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="_Archive\assets\fonts\FontAwesome.otf" />
+    <Content Include="Views\Shared\_OriginalLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +311,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReservationProject.DATA.EF\ReservationProject.DATA.EF.csproj">
+      <Project>{0f924c9a-e0f5-49ab-b561-52465965faaa}</Project>
+      <Name>ReservationProject.DATA.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
