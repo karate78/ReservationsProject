@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Urban by TEMPLATED</title>
+    <title>Skate Camp Reservations | @ViewBag.Title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
@@ -18,9 +18,11 @@
     <!-- Nav -->
     <nav id="menu">
         <ul class="links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="generic.html">Generic</a></li>
-            <li><a href="elements.html">Elements</a></li>
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="@Url.Action("Index", "Locations")">Locations</a></li>
+            <li><a href="@Url.Action("Index", "OwnerAssets")">Owner Assets</a></li>
+            <li><a href="@Url.Action("Index", "Reservations")">Reservations</a></li>
+            <li><a href="@Url.Action("Index", "UserDetails")">User Details</a></li>
         </ul>
     </nav>
 
@@ -38,7 +40,7 @@
                 <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
                 <li><a href="#" class="icon fa-snapchat"><span class="label">Snapchat</span></a></li>
             </ul>
-            <p>&copy; Untitled. All rights reserved. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.</p>
+            <p>&copy; @DateTime.Now.Year Skate Camp Reservation</p>
         </div>
     </footer>
 

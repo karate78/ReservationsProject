@@ -1,0 +1,88 @@
+﻿@model ReservationProject.DATA.EF.OwnerAsset
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OwnerAsset</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserDetail.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserDetail.FirstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

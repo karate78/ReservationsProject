@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ReservationProject.DATA.EF.OwnerAsset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildDOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserDetail.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildPhoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecialNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAdded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildDOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OwnerAssetId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OwnerAssetId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OwnerAssetId })
+        </td>
+    </tr>
+}
+
+</table>
