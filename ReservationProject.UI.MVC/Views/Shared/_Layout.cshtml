@@ -5,13 +5,14 @@
     <title>Skate Camp Reservations | @ViewBag.Title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
 </head>
 <body>
 
     <!-- Header -->
     <header id="header" class="alt">
-        <div class="logo"><a href="index.html">Urban <span>by TEMPLATED</span></a></div>
+        <div class="logo"><h2>Skate Camp Reservations</h2> </div>
         <a href="#menu">Menu</a>
     </header>
 
@@ -23,24 +24,29 @@
             <li><a href="@Url.Action("Index", "OwnerAssets")">Owner Assets</a></li>
             <li><a href="@Url.Action("Index", "Reservations")">Reservations</a></li>
             <li><a href="@Url.Action("Index", "UserDetails")">User Details</a></li>
+            <li>@Html.Partial("_LoginPartial")></li>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li><a href="@Url.Action("Index", "RolesAdmin")">Roles Admin</a></li>
+                <li><a href="@Url.Action("Index", "UsersAdmin")">Users Admin</a></li>
+            }
         </ul>
     </nav>
 
-    
+    <br />
+    <br />
+    <br />
 
     <!-- Main -->
-    
-    @RenderBody()
+    <main>
+        @RenderBody()
+    </main>
+
     <!-- Footer -->
     <footer id="footer">
         <div class="copyright">
-            <ul class="icons">
-                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon fa-snapchat"><span class="label">Snapchat</span></a></li>
-            </ul>
-            <p>&copy; @DateTime.Now.Year Skate Camp Reservation</p>
+            <p>&copy; @DateTime.Now.Year Skate Camp Reservations</p>
         </div>
     </footer>
 
@@ -51,7 +57,14 @@
     <script src="~/Content/assets/js/skel.min.js"></script>
     <script src="~/Content/assets/js/util.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
-    @RenderSection("scripts", required:false)
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker();
+        });
+    </script>
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>

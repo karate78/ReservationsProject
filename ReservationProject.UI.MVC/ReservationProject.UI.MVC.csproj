@@ -187,6 +187,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\custom.css" />
     <Content Include="Content\assets\css\font-awesome.min.css" />
     <Content Include="Content\assets\css\main.css" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
@@ -201,6 +202,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\noimage.png" />
     <Content Include="Content\images\pic01.jpg" />
     <Content Include="Content\images\pic02.jpg" />
     <Content Include="Content\images\pic03.jpg" />

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ReservationProject.DATA.EF.OwnerAsset>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Owner Assets";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -33,7 +33,7 @@
             @Html.DisplayNameFor(model => model.SkillLevel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserDetail.FirstName)
+            @Html.DisplayNameFor(model => model.UserDetail.Parent)
         </th>
         <th></th>
     </tr>
@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.ChildName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ChildPhoto)
+            <img src="~/Content/images/@item.ChildPhoto" alt="@item.ChildName" style="max-width:100px;"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SpecialNotes)
@@ -62,7 +62,7 @@
             @Html.DisplayFor(modelItem => item.SkillLevel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
+            @Html.DisplayFor(modelItem => item.UserDetail.Parent)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OwnerAssetId }) |

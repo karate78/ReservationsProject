@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ReservationProject.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace ReservationProject.UI.MVC.Controllers
 {
@@ -39,8 +40,9 @@ namespace ReservationProject.UI.MVC.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
+            string currentUserID = User.Identity.GetUserId();
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
-            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets, "OwnerAssetId", "ChildName");
+            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName").FirstOrDefault();
             return View();
         }
 
@@ -58,8 +60,9 @@ namespace ReservationProject.UI.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            string currentUserID = User.Identity.GetUserId();
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", reservation.LocationId);
-            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets, "OwnerAssetId", "ChildName", reservation.OwnerAssetId);
+            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName", reservation.OwnerAssetId).FirstOrDefault();
             return View(reservation);
         }
 

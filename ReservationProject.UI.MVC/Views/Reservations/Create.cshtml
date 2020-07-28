@@ -22,7 +22,6 @@
                 @Html.ValidationMessageFor(model => model.OwnerAssetId, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -34,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReservationDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @class = "datepicker" } })
                 @Html.ValidationMessageFor(model => model.ReservationDate, "", new { @class = "text-danger" })
             </div>
         </div>

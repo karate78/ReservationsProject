@@ -48,10 +48,31 @@ namespace ReservationProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerAssetId,ChildName,OwnerId,ChildPhoto,SpecialNotes,IsActive,DateAdded,ChildDOB,SkillLevel")] OwnerAsset ownerAsset)
+        public ActionResult Create([Bind(Include = "OwnerAssetId,ChildName,OwnerId,ChildPhoto,SpecialNotes,IsActive,DateAdded,ChildDOB,SkillLevel")] OwnerAsset ownerAsset, HttpPostedFileBase childImage)
         {
             if (ModelState.IsValid)
             {
+                #region FileUpload
+                string imageName = "noImage.png";
+                if (childImage != null)
+                {
+                    imageName = childImage.FileName;
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+                    string[] goodExts = new string[] { ".jpeg", ".jpg", ".png", ".gif" };
+                    if (goodExts.Contains(ext.ToLower())) 
+                    {
+                        imageName = Guid.NewGuid() + ext;
+                        childImage.SaveAs(Server.MapPath("~/Content/images/" + imageName));
+                    }
+                    else
+                    {
+                        imageName = "noImage.png";
+                    }
+                }
+
+                ownerAsset.ChildPhoto = imageName;
+
+                #endregion
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +103,32 @@ namespace ReservationProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OwnerAssetId,ChildName,OwnerId,ChildPhoto,SpecialNotes,IsActive,DateAdded,ChildDOB,SkillLevel")] OwnerAsset ownerAsset)
+        public ActionResult Edit([Bind(Include = "OwnerAssetId,ChildName,OwnerId,ChildPhoto,SpecialNotes,IsActive,DateAdded,ChildDOB,SkillLevel")] OwnerAsset ownerAsset, HttpPostedFileBase childImage)
         {
             if (ModelState.IsValid)
             {
+                #region FileUpload
+                if (childImage != null)
+                {
+                    string imageName = childImage.FileName;
+                    string ext = imageName.Substring(imageName.LastIndexOf('.'));
+                    string[] goodExts = new string[] { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    if (goodExts.Contains(ext.ToLower()))
+                    {
+                        imageName = Guid.NewGuid() + ext;
+                        childImage.SaveAs(Server.MapPath("~/Content/images/" + imageName));
+                        string currentFile = Request.Params["ChildPhoto"];
+                        if (currentFile != "noImage.png" && currentFile != null)
+                        {
+                            System.IO.File.Delete(Server.MapPath("~/Content/images/" + currentFile));
+                        }
+                    }
+
+                    ownerAsset.ChildPhoto = imageName;
+                }
+                #endregion
+
                 db.Entry(ownerAsset).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

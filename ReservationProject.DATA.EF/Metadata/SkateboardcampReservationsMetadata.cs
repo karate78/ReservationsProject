@@ -113,7 +113,7 @@ namespace ReservationProject.DATA.EF//.Metadata
     {
         public string Parent
         {
-            get { return FirstName + " " + LastName; }
+            get { return FirstName + " " + LastName;}
         }
     }
 
