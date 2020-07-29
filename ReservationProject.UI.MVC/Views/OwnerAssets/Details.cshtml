@@ -1,13 +1,13 @@
 ﻿@model ReservationProject.DATA.EF.OwnerAsset
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.ChildName;
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>OwnerAsset</h4>
+
+<div id="form-container">
+    <h3>@ViewBag.Title</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -23,7 +23,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ChildPhoto)
+            <img src="~/Content/images/@Model.ChildPhoto" alt="@Model.ChildName" style="max-width:150px;"/>
         </dd>
 
         <dt>
@@ -34,13 +34,13 @@
             @Html.DisplayFor(model => model.SpecialNotes)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.IsActive)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IsActive)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.DateAdded)
@@ -76,6 +76,7 @@
 
     </dl>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetId }) |
     @Html.ActionLink("Back to List", "Index")

@@ -2279,7 +2279,7 @@
 		padding: 0.75em 1em;
 	}
 
-	input[type="checkbox"],
+	/*input[type="checkbox"],
 	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -2337,7 +2337,7 @@
 
 	input[type="checkbox"] + label:before {
 		border-radius: 4px;
-	}
+	}*/
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;

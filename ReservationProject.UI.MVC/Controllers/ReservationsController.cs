@@ -42,7 +42,7 @@ namespace ReservationProject.UI.MVC.Controllers
         {
             string currentUserID = User.Identity.GetUserId();
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
-            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName").FirstOrDefault();
+            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName");
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace ReservationProject.UI.MVC.Controllers
 
             string currentUserID = User.Identity.GetUserId();
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", reservation.LocationId);
-            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName", reservation.OwnerAssetId).FirstOrDefault();
+            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName", reservation.OwnerAssetId);
             return View(reservation);
         }
 

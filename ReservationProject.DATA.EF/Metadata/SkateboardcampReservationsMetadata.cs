@@ -103,6 +103,7 @@ namespace ReservationProject.DATA.EF//.Metadata
         public int LocationId { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}")]
+        [Display(Name = "Date")]
         public System.DateTime ReservationDate { get; set; }
     }
     #endregion

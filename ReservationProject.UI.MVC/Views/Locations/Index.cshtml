@@ -38,7 +38,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.LocationName)
+            <a href="@Url.Action("Details", new {id = item.LocationId})" title="@item.LocationName">
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </a>
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InstructorName)

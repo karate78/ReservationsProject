@@ -1,4 +1,11 @@
 ﻿body {
 }
 
+#form-container {
+    padding: 1em;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    margin: 2em;
+}
+
 
