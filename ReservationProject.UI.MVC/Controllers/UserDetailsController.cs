@@ -10,6 +10,7 @@ using ReservationProject.DATA.EF;
 
 namespace ReservationProject.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserDetailsController : Controller
     {
         private SkatecampReservationsEntities db = new SkatecampReservationsEntities();

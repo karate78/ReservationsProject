@@ -6,9 +6,13 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("User"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -35,35 +39,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildName)
-        </td>
-        <td>
-            <img src="~/Content/images/@item.ChildPhoto" alt="@item.ChildName" style="max-width:100px;"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpecialNotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateAdded)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildDOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SkillLevel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserDetail.Parent)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OwnerAssetId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OwnerAssetId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OwnerAssetId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("Details", new { id = item.OwnerAssetId })">
+                    @Html.DisplayFor(modelItem => item.ChildName)
+                </a>
+                
+            </td>
+            <td>
+                <img src="~/Content/images/@item.ChildPhoto" alt="@item.ChildName" style="max-width:100px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildDOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDetail.Parent)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetId }) |
+                
+                @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetId })
+            </td>
+        </tr>
+    }
 
 </table>

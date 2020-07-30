@@ -198,12 +198,15 @@
     <Content Include="Content\assets\js\skel.min.js" />
     <Content Include="Content\assets\js\util.js" />
     <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\droppingin.jpg" />
+    <Content Include="Content\images\droppingin2.jpg" />
     <Content Include="Content\images\noimage.png" />
     <Content Include="Content\images\pic01.jpg" />
     <Content Include="Content\images\pic02.jpg" />
     <Content Include="Content\images\pic03.jpg" />
     <Content Include="Content\images\pic04.jpg" />
     <Content Include="Content\images\pic05.jpg" />
+    <Content Include="Content\images\skatecampgroup2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
