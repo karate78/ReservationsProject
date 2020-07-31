@@ -24,11 +24,15 @@
             <li><a href="@Url.Action("Index", "Locations")">Locations</a></li>
             <li><a href="@Url.Action("Index", "OwnerAssets")">Owner Assets</a></li>
             <li><a href="@Url.Action("Index", "Reservations")">Reservations</a></li>
-            <li>@Html.Partial("_LoginPartial")></li>
+            @if (User.IsInRole("Admin") || (User.IsInRole("User")))
+            {
+                <li><a href="@Url.Action("Index", "UserDetails")">User Details</a></li>
+            }
+            @Html.Partial("_LoginPartial")
 
             @if (User.IsInRole("Admin"))
             {
-                <li><a href="@Url.Action("Index", "UserDetails")">User Details</a></li>
+
                 <li><a href="@Url.Action("Index", "RolesAdmin")">Roles Admin</a></li>
                 <li><a href="@Url.Action("Index", "UsersAdmin")">Users Admin</a></li>
             }

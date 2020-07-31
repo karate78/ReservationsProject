@@ -6,9 +6,13 @@
 
 <h2>@ViewBag.Title</h2>
 
+@if (User.IsInRole("Admin"))
+{
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -32,7 +36,11 @@
         <th>
             @Html.DisplayNameFor(model => model.ReservationLimit)
         </th>
-        <th></th>
+        @if (User.IsInRole("Admin"))
+        {
+            <th></th>
+        }
+
     </tr>
 
 @foreach (var item in Model) {
@@ -41,7 +49,7 @@
             <a href="@Url.Action("Details", new {id = item.LocationId})" title="@item.LocationName">
                 @Html.DisplayFor(modelItem => item.LocationName)
             </a>
-            
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InstructorName)
@@ -61,11 +69,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.ReservationLimit)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LocationId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LocationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LocationId })
-        </td>
+        @if (User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+            </td>
+        }
+
     </tr>
 }
 

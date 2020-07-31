@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ReservationProject.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace ReservationProject.UI.MVC.Controllers
 {
+    [Authorize]
     public class OwnerAssetsController : Controller
     {
         private SkatecampReservationsEntities db = new SkatecampReservationsEntities();
@@ -17,7 +19,8 @@ namespace ReservationProject.UI.MVC.Controllers
         // GET: OwnerAssets
         public ActionResult Index()
         {
-            var ownerAssets = db.OwnerAssets.Include(o => o.UserDetail);
+            string currentUser = User.Identity.GetUserId();
+            var ownerAssets = db.OwnerAssets.Where(w => w.OwnerId == currentUser).Include(o => o.UserDetail);
             return View(ownerAssets.ToList());
         }
 
@@ -37,6 +40,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: OwnerAssets/Create
+        [Authorize(Roles = "Admin, User")]
         public ActionResult Create()
         {
             ViewBag.OwnerId = new SelectList(db.UserDetails, "UserId", "FirstName");
@@ -69,8 +73,9 @@ namespace ReservationProject.UI.MVC.Controllers
                         imageName = "noImage.png";
                     }
                 }
-
+                
                 ownerAsset.ChildPhoto = imageName;
+                ownerAsset.OwnerId = User.Identity.GetUserId();
 
                 #endregion
                 db.OwnerAssets.Add(ownerAsset);
@@ -83,6 +88,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: OwnerAssets/Edit/5
+        [Authorize(Roles = "Admin, User")]       
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,6 +100,7 @@ namespace ReservationProject.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            string currentUserID = User.Identity.GetUserId();
             ViewBag.OwnerId = new SelectList(db.UserDetails, "UserId", "FirstName", ownerAsset.OwnerId);
             return View(ownerAsset);
         }
@@ -138,6 +145,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: OwnerAssets/Delete/5
+        [Authorize(Roles = "Admin, User")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

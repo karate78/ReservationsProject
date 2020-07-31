@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace ReservationProject.UI.MVC.Controllers
 {
+    [Authorize]
     public class ReservationsController : Controller
     {
         private SkatecampReservationsEntities db = new SkatecampReservationsEntities();
@@ -18,8 +19,20 @@ namespace ReservationProject.UI.MVC.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
-            return View(reservations.ToList());
+            if (User.IsInRole("User"))
+            {
+                string currentUser = User.Identity.GetUserId();
+                var reservations = db.Reservations.Where(w => w.OwnerAsset.OwnerId == currentUser).Include(r => r.Location).Include(r => r.OwnerAsset);
+                return View(reservations.ToList());
+            }
+            else
+            {
+                var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
+                return View(reservations.ToList());
+            }
+
+
+
         }
 
         // GET: Reservations/Details/5
@@ -38,6 +51,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: Reservations/Create
+        [Authorize(Roles = "Admin, User")]
         public ActionResult Create()
         {
             string currentUserID = User.Identity.GetUserId();
@@ -67,6 +81,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: Reservations/Edit/5
+        [Authorize(Roles = "Admin, User")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -102,6 +117,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: Reservations/Delete/5
+        [Authorize(Roles = "Admin, User")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
