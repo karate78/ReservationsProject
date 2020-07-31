@@ -19,9 +19,18 @@ namespace ReservationProject.UI.MVC.Controllers
         // GET: OwnerAssets
         public ActionResult Index()
         {
-            string currentUser = User.Identity.GetUserId();
-            var ownerAssets = db.OwnerAssets.Where(w => w.OwnerId == currentUser).Include(o => o.UserDetail);
-            return View(ownerAssets.ToList());
+            if (User.IsInRole("User"))
+            {
+                string currentUser = User.Identity.GetUserId();
+                var ownerAssets = db.OwnerAssets.Where(w => w.OwnerId == currentUser).Include(o => o.UserDetail);
+                return View(ownerAssets.ToList());
+            }
+            else
+            {
+                var ownerAssets = db.OwnerAssets.Include(o => o.UserDetail);
+                return View(ownerAssets.ToList());
+            }
+            
         }
 
         // GET: OwnerAssets/Details/5
@@ -78,6 +87,7 @@ namespace ReservationProject.UI.MVC.Controllers
                 ownerAsset.OwnerId = User.Identity.GetUserId();
 
                 #endregion
+                ownerAsset.DateAdded = DateTime.Now;
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
                 return RedirectToAction("Index");

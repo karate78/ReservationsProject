@@ -54,9 +54,18 @@ namespace ReservationProject.UI.MVC.Controllers
         [Authorize(Roles = "Admin, User")]
         public ActionResult Create()
         {
-            string currentUserID = User.Identity.GetUserId();
-            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
-            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName");
+            if (User.IsInRole("User"))
+            {
+                string currentUserID = User.Identity.GetUserId();
+                ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
+                ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName");
+            }
+            else
+            {
+                ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
+                ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets, "OwnerAssetId", "ChildName");
+            }
+            
             return View();
         }
 
@@ -67,16 +76,50 @@ namespace ReservationProject.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReservationId,OwnerAssetId,LocationId,ReservationDate")] Reservation reservation)
         {
-            if (ModelState.IsValid)
+            if (User.IsInRole("User"))
             {
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string currentUserID = User.Identity.GetUserId();
+                ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", reservation.LocationId);
+                ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName", reservation.OwnerAssetId);
+            }
+            else
+            {
+                ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", reservation.LocationId);
+                ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets, "OwnerAssetId", "ChildName", reservation.OwnerAssetId);
             }
 
-            string currentUserID = User.Identity.GetUserId();
-            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", reservation.LocationId);
-            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets.Where(oa => oa.UserDetail.UserId == currentUserID), "OwnerAssetId", "ChildName", reservation.OwnerAssetId);
+            if (ModelState.IsValid)
+            {
+                int reservNbr = db.Reservations.Where(x => x.ReservationDate == reservation.ReservationDate &&
+                    x.LocationId == reservation.LocationId).Count();
+                Location locationReserv = db.Locations.Find(reservation.LocationId);
+                if (Convert.ToInt32(locationReserv.ReservationLimit) > reservNbr)
+                {
+                    db.Reservations.Add(reservation);
+                    db.SaveChanges();
+                    
+                }
+                else
+                {
+                    if (Convert.ToInt32(locationReserv.ReservationLimit) <= reservNbr && User.IsInRole("Admin"))
+                    {
+                        db.Reservations.Add(reservation);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    ViewBag.Message = "There are too many participants on that date. Try a different date.";
+                    return View(reservation);
+                }
+                return RedirectToAction("Index");
+
+                //db.Reservations.Add(reservation);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
+
+            }
+
+            
+            
             return View(reservation);
         }
 
