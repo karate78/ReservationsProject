@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ReservationProject.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()
@@ -75,6 +75,7 @@ namespace ReservationProject.UI.MVC.Controllers
         //
         // GET: /Users/Create
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             //Get the list of Roles
@@ -194,6 +195,7 @@ namespace ReservationProject.UI.MVC.Controllers
         //
         // GET: /Users/Delete/5
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)

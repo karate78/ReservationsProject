@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +201,7 @@
     <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\droppingin.jpg" />
     <Content Include="Content\images\droppingin2.jpg" />
+    <Content Include="Content\images\JeremyRaab.jpg" />
     <Content Include="Content\images\noimage.png" />
     <Content Include="Content\images\pic01.jpg" />
     <Content Include="Content\images\pic02.jpg" />
@@ -207,6 +209,9 @@
     <Content Include="Content\images\pic04.jpg" />
     <Content Include="Content\images\pic05.jpg" />
     <Content Include="Content\images\skatecampgroup2.jpg" />
+    <Content Include="Content\images\Stevephoto.jpg" />
+    <Content Include="Content\images\Weston.jpg" />
+    <Content Include="Content\images\Westontrophy2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -319,6 +324,7 @@
     <Content Include="Views\UserDetails\Details.cshtml" />
     <Content Include="Views\UserDetails\Edit.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

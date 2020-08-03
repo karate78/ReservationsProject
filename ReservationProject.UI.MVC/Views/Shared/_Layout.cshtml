@@ -24,6 +24,7 @@
             <li><a href="@Url.Action("Index", "Locations")">Locations</a></li>
             <li><a href="@Url.Action("Index", "OwnerAssets")">Owner Assets</a></li>
             <li><a href="@Url.Action("Index", "Reservations")">Reservations</a></li>
+            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
             @if (User.IsInRole("Admin") || (User.IsInRole("User")))
             {
                 <li><a href="@Url.Action("Index", "UserDetails")">User Details</a></li>
