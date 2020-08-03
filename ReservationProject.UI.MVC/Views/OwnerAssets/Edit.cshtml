@@ -19,6 +19,7 @@
             @Html.HiddenFor(model => model.OwnerAssetId)
             @Html.HiddenFor(model => model.OwnerId)
             @Html.HiddenFor(model => model.ChildPhoto)
+            @Html.HiddenFor(model => model.DateAdded)
 
 
             <div class="form-group">
@@ -55,18 +56,18 @@
             </div>
 
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.DateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateAdded, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.DateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateAdded, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.ChildDOB, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ChildDOB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ChildDOB, new { htmlAttributes = new { @class = "datepicker", @autocomplete = "off" } })
                     @Html.ValidationMessageFor(model => model.ChildDOB, "", new { @class = "text-danger" })
                 </div>
             </div>

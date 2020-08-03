@@ -79,7 +79,7 @@ namespace ReservationProject.DATA.EF//.Metadata
         public System.DateTime DateAdded { get; set; }
 
         [Required(ErrorMessage = "** Date of Birth is Required **")]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime ChildDOB { get; set; }
 
         [StringLength(50, ErrorMessage = "** Maximum 50 Characters **")]

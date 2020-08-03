@@ -87,6 +87,7 @@ namespace ReservationProject.UI.MVC.Controllers
                 ownerAsset.OwnerId = User.Identity.GetUserId();
 
                 #endregion
+                ownerAsset.IsActive = true;
                 ownerAsset.DateAdded = DateTime.Now;
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
@@ -98,7 +99,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: OwnerAssets/Edit/5
-        [Authorize(Roles = "Admin, User")]       
+        [Authorize(Roles = "Admin, User, Staff")]       
         public ActionResult Edit(int? id)
         {
             if (id == null)
