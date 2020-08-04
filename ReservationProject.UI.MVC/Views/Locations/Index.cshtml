@@ -9,7 +9,7 @@
 @if (User.IsInRole("Admin"))
 {
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class="button" })
 </p>
 }
 

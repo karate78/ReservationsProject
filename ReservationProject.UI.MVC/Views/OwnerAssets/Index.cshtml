@@ -6,10 +6,10 @@
 
 <h2>@ViewBag.Title</h2>
 
-@if (User.IsInRole("User"))
+@if (User.IsInRole("User") || User.IsInRole("Admin"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
     </p>
 }
 
@@ -36,42 +36,49 @@
         <th>
             @Html.DisplayNameFor(model => model.UserDetail.Parent)
         </th>
-        <th></th>
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
+            <th></th>
+        }
+
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <a href="@Url.Action("Details", new { id = item.OwnerAssetId })">
-                    @Html.DisplayFor(modelItem => item.ChildName)
-                </a>
-                
-            </td>
-            <td>
-                <img src="~/Content/images/@item.ChildPhoto" alt="@item.ChildName" style="max-width:100px;" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialNotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAdded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChildDOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SkillLevel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserDetail.Parent)
-            </td>
+    <tr>
+        <td>
+            <a href="@Url.Action("Details", new { id = item.OwnerAssetId })">
+                @Html.DisplayFor(modelItem => item.ChildName)
+            </a>
+
+        </td>
+        <td>
+            <img src="~/Content/images/@item.ChildPhoto" alt="@item.ChildName" style="max-width:100px;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecialNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAdded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildDOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserDetail.Parent)
+        </td>
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetId }) |
-                
                 @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetId })
             </td>
-        </tr>
+        }
+
+    </tr>
     }
 
 </table>

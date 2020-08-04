@@ -72,17 +72,21 @@ namespace ReservationProject.DATA.EF//.Metadata
 
         [StringLength(300, ErrorMessage = "** Maximum 300 Characters **")]
         [UIHint("MultilineText")]
+        [Display(Name = "Special Notes")]
         public string SpecialNotes { get; set; }
         public bool IsActive { get; set; }
 
         [DisplayFormat(DataFormatString ="{0:d}")]
+        [Display(Name = "Date Added")]
         public System.DateTime DateAdded { get; set; }
 
         [Required(ErrorMessage = "** Date of Birth is Required **")]
+        [Display(Name = "Date of Birth")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime ChildDOB { get; set; }
 
         [StringLength(50, ErrorMessage = "** Maximum 50 Characters **")]
+        [Display(Name = "Skill Level")]
         public string SkillLevel { get; set; }
     }
     #endregion
@@ -102,7 +106,7 @@ namespace ReservationProject.DATA.EF//.Metadata
         [Required(ErrorMessage = "** Location ID is Required **")]
         public int LocationId { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         [Display(Name = "Date")]
         public System.DateTime ReservationDate { get; set; }
     }

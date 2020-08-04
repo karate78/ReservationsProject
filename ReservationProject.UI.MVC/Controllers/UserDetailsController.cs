@@ -10,7 +10,7 @@ using ReservationProject.DATA.EF;
 
 namespace ReservationProject.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class UserDetailsController : Controller
     {
         private SkatecampReservationsEntities db = new SkatecampReservationsEntities();
@@ -37,6 +37,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: UserDetails/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -91,6 +92,7 @@ namespace ReservationProject.UI.MVC.Controllers
         }
 
         // GET: UserDetails/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             if (id == null)

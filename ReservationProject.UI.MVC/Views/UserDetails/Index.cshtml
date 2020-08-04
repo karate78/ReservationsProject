@@ -9,7 +9,7 @@
 @if (User.IsInRole("Admin"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
     </p>
 }
 
@@ -18,8 +18,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Parent)
         </th>
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
+            <th></th>
+        }
 
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -32,13 +35,17 @@
 
             </td>
 
-                @if (User.IsInRole("Admin"))
-                {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                    @if (User.IsInRole("Admin"))
+                    {
                         @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
-                    </td>
-                }
+                    }
+
+                </td>
+            }
 
         </tr>
     }

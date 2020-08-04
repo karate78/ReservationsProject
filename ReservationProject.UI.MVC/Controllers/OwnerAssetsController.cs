@@ -52,7 +52,7 @@ namespace ReservationProject.UI.MVC.Controllers
         [Authorize(Roles = "Admin, User")]
         public ActionResult Create()
         {
-            ViewBag.OwnerId = new SelectList(db.UserDetails, "UserId", "FirstName");
+            ViewBag.OwnerId = new SelectList(db.UserDetails, "UserId", "Parent");
             return View();
         }
 
@@ -84,7 +84,11 @@ namespace ReservationProject.UI.MVC.Controllers
                 }
                 
                 ownerAsset.ChildPhoto = imageName;
-                ownerAsset.OwnerId = User.Identity.GetUserId();
+                if (User.IsInRole("User"))
+                {
+                    ownerAsset.OwnerId = User.Identity.GetUserId();
+                }
+                
 
                 #endregion
                 ownerAsset.IsActive = true;
@@ -94,7 +98,7 @@ namespace ReservationProject.UI.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OwnerId = new SelectList(db.UserDetails, "UserId", "FirstName", ownerAsset.OwnerId);
+            ViewBag.OwnerId = new SelectList(db.UserDetails, "UserId", "Parent", ownerAsset.OwnerId);
             return View(ownerAsset);
         }
 

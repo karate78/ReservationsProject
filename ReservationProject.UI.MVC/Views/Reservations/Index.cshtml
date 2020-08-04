@@ -8,7 +8,7 @@
 @if (User.IsInRole("Admin") || User.IsInRole("User"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
     </p>
 }
 

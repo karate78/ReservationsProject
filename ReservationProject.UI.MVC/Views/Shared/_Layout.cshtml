@@ -32,14 +32,15 @@
             {
                 <li><a href="@Url.Action("Index", "UserDetails")">User Details</a></li>
             }
-            @Html.Partial("_LoginPartial")
-
             @if (User.IsInRole("Admin"))
             {
 
                 <li><a href="@Url.Action("Index", "RolesAdmin")">Roles Admin</a></li>
                 <li><a href="@Url.Action("Index", "UsersAdmin")">Users Admin</a></li>
             }
+            @Html.Partial("_LoginPartial")
+
+
         </ul>
     </nav>
 
@@ -69,13 +70,31 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="~/Content/assets/js/lity.js"></script>
     <script>
         $(function () {
             $(".datepicker").datepicker({ changeYear: true, yearRange: '2000:2021' });
         });
 
-        
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $("#opener").on("click", function () {
+                $("#dialog").dialog("open");
+            });
+        });
     </script>
     @RenderSection("scripts", required: false)
 
